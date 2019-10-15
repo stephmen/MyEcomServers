@@ -1,7 +1,10 @@
-#endpoint: ${env:PRISMA_ENDPOINT}
-endpoint: https://us1.prisma.sh/stephmen-0871d8/MYECOM7/MYECOM7
+endpoint: ${env:PRISMA_ENDPOINT}
+#endpoint: https://us1.prisma.sh/stephmen-0871d8/MYECOM7/MYECOM7
 datamodel: datamodel.graphql
 #secret: ${env:PRISMA_SECRET}
-hooks:
-  post-deploy:
-    - graphql get-schema -p prisma
+
+generate:
+   - generator: graphql-schema
+     output: ./src/generated/prisma.graphql
+
+
